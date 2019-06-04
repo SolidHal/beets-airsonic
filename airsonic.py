@@ -131,13 +131,14 @@ class airsonic(BeetsPlugin):
             items = _do_query(lib, query, False, False)
         except:
             return []
+        #get the songs list from the tuple
+        songs = items[0]
         self._log.info(u'----Locating:-----')
-        for item in items:
+        for item in songs:
             if not item: # skip empty lists
                 continue
-            item = item[0] #peel back the list
             self._log.info(u'{0.title} by {0.artist} on album {0.album} in beets is:', item)
-            searchQuery = item.title + item.album + item.artist
+            searchQuery = item.title + " " + item.artist
             reply = conn.search3(searchQuery, artistCount=1, albumCount=1, songCount=1)
             #peel back the artist and album layers to get the song id
             searchResult = reply.get("searchResult3")
