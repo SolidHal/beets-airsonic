@@ -26,15 +26,17 @@ this command initiates, and waits for completion of a media folder scan
 
 #### Configuration
 
-The following fields must be added to your beets config.yaml
+The following fields must be added to your beets config.yaml. The values needs to adjustet depending on your setup.
 
-```
+```yml
 airsonic:
-    server: http://
-    user: user
-    password: "password"
-    port: 4040
-    log: "/config/airsonic-beets.log"
+  baseurl: http://10.0.0.2
+  port: 4040
+  apipath: /airsonic/rest
+  apiversion: 1.15.0
+  user: {{user}}
+  password: {{password}}
+  log: "/config/airsonic-beets.log"
 ```
 
 additionally, you must add `airsonic` to your `plugins:` field in config.yaml
@@ -42,22 +44,24 @@ additionally, you must add `airsonic` to your `plugins:` field in config.yaml
 you can test to make sure this information is correct by running `beet airsonictest`
 
 
-#### Installation
+#### Dependencies
 
 This plugin relies on the py-sonic library and python3
 py-sonic can be installed by running
 ```
 pip install py-sonic
 ```
-
 more about py-sonic is available here: https://github.com/crustymonkey/py-sonic
 
-this plugin can then be installed by finding where you installed beets, and copying airsonic.py to 
-```
-beets/beetsplug/airsonic.py
-```
+#### Installation
 
-my beets install was located at:
+The plugin is installed by putting the python file into the `beetsplug` folder.
+
+the folder usually sits inside of the beets installation or besides it:
 ```
-/usr/lib/python3.6/site-packages/beets/
+/usr/lib/python3.6/site-packages/beets/beetsplug
+```
+or
+```
+/usr/lib/python3.6/site-packages/beetsplug
 ```
