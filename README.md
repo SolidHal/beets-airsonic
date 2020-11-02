@@ -62,7 +62,7 @@ my beets install was located at:
 /usr/lib/python3.6/site-packages/beets/
 ```
 
-Another way would be to include something like this to your conf.yaml:
+Another way would be to include something like this to your config.yaml:
 ```
 pluginpath:
     - /home/user/.config/beets/plugins
