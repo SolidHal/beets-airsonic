@@ -61,3 +61,17 @@ my beets install was located at:
 ```
 /usr/lib/python3.6/site-packages/beets/
 ```
+
+Another way would be to include something like this to your conf.yaml:
+```
+pluginpath:
+    - /home/user/.config/beets/plugins
+```
+And move the file 'airsonic.py' to this directory:
+```
+/home/user/.config/beets/plugins
+```
+
+More about this setting here: https://beets.readthedocs.io/en/stable/reference/config.html#pluginpath
+
+
