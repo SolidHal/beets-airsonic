@@ -69,15 +69,23 @@ class airsonic(BeetsPlugin):
 
     # connect to the specified server, returns a libsonic.Connection
     def connect(self):
-        server = self.config['server'].get()
-        user = self.config['user'].get()
-        password = self.config['password'].get()
-        port = self.config['port'].get()
-        # We pass in the base url, the username, password, and port number
-        # Be sure to use https:// if this is an ssl connection!
-        conn = libsonic.Connection(server , user , 
-                                   password , port=port)
-        return conn
+            baseUrl = self.config['baseurl'].get()
+            apiPath = self.config['apipath'].get()
+            apiVersion = self.config['apiversion'].get()
+            user = self.config['user'].get()
+            password = self.config['password'].get()
+            port = self.config['port'].get()
+            # We pass in the base url, path, the username, password, port number and api version
+            # Be sure to use https:// if this is an ssl connection!
+            conn = libsonic.Connection(
+                baseUrl=baseUrl,
+                port=port,
+                serverPath=apiPath,
+                apiVersion=apiVersion,
+                username=user,
+                password=password
+            )
+            return conn
 
     # run a scan on the airsonic server
     def scan(self, lib, opts, args):
